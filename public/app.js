@@ -251,6 +251,7 @@ function setTopNote(text) {
 /* ================= client home ================= */
 
 async function showHome() {
+  window.scrollTo(0, 0);
   if (IS_ADMIN) return showAdmin();
   setTopNote('Client Self-Service Forms');
   state.def = null;
@@ -302,9 +303,9 @@ async function showHome() {
     </div>
 
     <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="available">${icon('clipboard')} Available Forms <span class="tab-count">${availableForms.length}</span></button>
-      <button class="tab" data-tab="progress">${icon('clock')} In Progress${inProgress.length ? ` <span class="tab-count">${inProgress.length}</span>` : ''}</button>
-      <button class="tab" data-tab="submitted">${icon('check')} Submitted Forms${submitted.length ? ` <span class="tab-count">${submitted.length}</span>` : ''}</button>
+      <button class="tab active" data-tab="available">${icon('clipboard')}<span class="tab-label"><span class="full">Available Forms</span><span class="short">Available</span></span><span class="tab-count">${availableForms.length}</span></button>
+      <button class="tab" data-tab="progress">${icon('clock')}<span class="tab-label">In Progress</span>${inProgress.length ? ` <span class="tab-count">${inProgress.length}</span>` : ''}</button>
+      <button class="tab" data-tab="submitted">${icon('check')}<span class="tab-label"><span class="full">Submitted Forms</span><span class="short">Submitted</span></span>${submitted.length ? ` <span class="tab-count">${submitted.length}</span>` : ''}</button>
     </div>
 
     <div class="tab-panel" data-panel="available">
@@ -415,6 +416,7 @@ async function resumeSession(sessionId, toReview = false) {
 /* ================= admin views ================= */
 
 function showAdminLogin(message) {
+  window.scrollTo(0, 0);
   setTopNote('Admin sign-in');
   app.classList.remove('wide');
   app.innerHTML = `
@@ -449,6 +451,7 @@ function showAdminLogin(message) {
 }
 
 async function showAdmin() {
+  window.scrollTo(0, 0);
   if (!state.adminToken) return showAdminLogin();
   setTopNote('Admin dashboard');
   state.def = null;
@@ -527,6 +530,7 @@ async function showAdmin() {
 /* ================= section page (electronic form) ================= */
 
 function renderSection(focusQid) {
+  window.scrollTo(0, 0);
   const sections = visibleSections();
   if (state.sectionIndex >= sections.length) return showReview();
   if (state.sectionIndex < 0) state.sectionIndex = 0;
@@ -608,7 +612,6 @@ function renderSection(focusQid) {
     if (state.returnToReview) { state.returnToReview = false; return showReview(); }
     state.sectionIndex -= 1;
     renderSection();
-    window.scrollTo(0, 0);
   });
   document.getElementById('nextBtn').addEventListener('click', async () => {
     collectAllFieldValues();
@@ -617,7 +620,6 @@ function renderSection(focusQid) {
     if (state.returnToReview) { state.returnToReview = false; return showReview(); }
     state.sectionIndex += 1;
     renderSection();
-    window.scrollTo(0, 0);
   });
   if (state.previewOpen) wirePreviewPanel();
 
@@ -908,6 +910,7 @@ function displayValue(q, v) {
 }
 
 async function showReview() {
+  window.scrollTo(0, 0);
   await flushAnswers();
   setTopNote(`${state.def.title} — ${IS_ADMIN ? 'Admin review' : 'Review'}`);
   app.classList.add('wide');
@@ -1036,6 +1039,7 @@ function printPdf(sessionId) {
 }
 
 function showDone() {
+  window.scrollTo(0, 0);
   const sid = state.session.id;
   setTopNote(state.def.title);
   app.classList.remove('wide');
