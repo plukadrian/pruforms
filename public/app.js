@@ -1130,6 +1130,12 @@ async function generatePdf() {
   btn.disabled = true;
   btn.textContent = 'Generating the PDF…';
   try {
+    const saved = await flushAnswers();
+    if (!saved) {
+      btn.disabled = false;
+      btn.textContent = IS_ADMIN ? 'Finalize — generate reviewed PDF' : 'Submit form for review';
+      return;
+    }
     const out = await api(`/api/sessions/${state.session.id}/generate`, { method: 'POST' });
     state.session.status = out.status;
     showDone();
