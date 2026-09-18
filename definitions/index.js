@@ -8,4 +8,5 @@ module.exports = [
   require('./change-servicing-agent.json'),
   require('./policy-amendment.json'),
   require('./reinstatement.json'),
+  require('./premium-redirection-fund-switch.json'),
 ];

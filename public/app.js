@@ -254,6 +254,7 @@ const FORM_META = {
   'change-servicing-agent': { icon: 'users', time: '~2-4 mins' },
   'policy-amendment': { icon: 'doc', time: '~5-8 mins' },
   'reinstatement': { icon: 'refresh', time: '~5-10 mins' },
+  'premium-redirection-fund-switch': { icon: 'refresh', time: '~5-10 mins' },
 };
 
 function setTopNote(text) {

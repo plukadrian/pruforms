@@ -1,0 +1,1457 @@
+{
+  "id": "premium-redirection-fund-switch",
+  "title": "Premium Redirection and Fund Switch",
+  "description": "Redirect future renewal premiums, switch accumulated units between funds, or request both.",
+  "pdf": "premium-redirection-fund-switch.pdf",
+  "sections": [
+    {
+      "id": "policyowner",
+      "title": "Policyowner details",
+      "questions": [
+        {
+          "id": "policy_number",
+          "q": "Policy number",
+          "type": "text",
+          "required": true,
+          "map": [
+            {
+              "comb": [
+                "POLICYNUMBER-1.0",
+                "POLICYNUMBER-1.1",
+                "POLICYNUMBER-1.2",
+                "POLICYNUMBER-1.3",
+                "POLICYNUMBER-1.4",
+                "POLICYNUMBER-1.5",
+                "POLICYNUMBER-1.6",
+                "POLICYNUMBER-1.7"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "surname",
+          "q": "Surname",
+          "type": "text",
+          "required": true,
+          "map": [
+            {
+              "text": "NAME-A5.0.0---ALPHA-1"
+            }
+          ]
+        },
+        {
+          "id": "given_name",
+          "q": "Given name",
+          "type": "text",
+          "required": true,
+          "map": [
+            {
+              "text": "-2"
+            }
+          ]
+        },
+        {
+          "id": "middle_name",
+          "q": "Middle name",
+          "type": "text",
+          "map": [
+            {
+              "text": "NAME-A5.0.0---ALPHA"
+            }
+          ]
+        },
+        {
+          "id": "alias",
+          "q": "Other legal name / alias",
+          "type": "text",
+          "map": [
+            {
+              "text": "NAME-A5.0.0"
+            }
+          ]
+        },
+        {
+          "id": "dob",
+          "q": "Date of birth",
+          "type": "date",
+          "required": true,
+          "map": [
+            {
+              "comb": [
+                "DOB-1.0",
+                "DOB-1.1",
+                "DOB-1.2",
+                "DOB-1.3",
+                "DOB-1.4",
+                "DOB-1.5",
+                "DOB-1.6",
+                "DOB-1.7"
+              ],
+              "format": "date_digits"
+            }
+          ]
+        },
+        {
+          "id": "nationality",
+          "q": "Nationality",
+          "type": "text",
+          "required": true,
+          "map": [
+            {
+              "text": "NUMBER-1.2"
+            }
+          ]
+        },
+        {
+          "id": "mobile",
+          "q": "Mobile number",
+          "type": "phone",
+          "required": true,
+          "map": [
+            {
+              "text": "NUMBER-1.0"
+            }
+          ]
+        },
+        {
+          "id": "telephone",
+          "q": "Telephone number",
+          "type": "phone",
+          "map": [
+            {
+              "text": "NUMBER-1.1"
+            }
+          ]
+        },
+        {
+          "id": "occupation",
+          "q": "Occupation and exact duties (AFP/PNP: include rank)",
+          "type": "text",
+          "map": [
+            {
+              "text": "NAME-A5.0.1"
+            }
+          ]
+        },
+        {
+          "id": "employer",
+          "q": "Employer / business name",
+          "type": "text",
+          "map": [
+            {
+              "text": "NAME-A5.1.1"
+            }
+          ]
+        },
+        {
+          "id": "personal_changes",
+          "q": "Have your personal details changed in Pru Life UK records?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": "Yes"
+            },
+            {
+              "value": "no",
+              "label": "No"
+            }
+          ],
+          "map": [
+            {
+              "radio": "Check Box5-OH-OH",
+              "valueMap": {
+                "yes": "Yes",
+                "no": "2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "request_type",
+          "q": "What would you like to request?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "redirection",
+              "label": "Premium redirection"
+            },
+            {
+              "value": "switch",
+              "label": "Fund switch"
+            },
+            {
+              "value": "both",
+              "label": "Both"
+            }
+          ],
+          "map": []
+        }
+      ]
+    },
+    {
+      "id": "redirection",
+      "title": "Premium redirection",
+      "showIf": {
+        "q": "request_type",
+        "in": [
+          "redirection",
+          "both"
+        ]
+      },
+      "intro": "Redirect future renewal premiums. Allocations must total 100%, in multiples of 5%. The new direction takes effect on the next premium payment.",
+      "questions": [
+        {
+          "id": "redirection_count",
+          "q": "How many fund allocations?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            }
+          ],
+          "map": []
+        },
+        {
+          "id": "fund_0",
+          "q": "Fund 1: name",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 1
+          },
+          "map": [
+            {
+              "text": "TEXT TEXT AW.0"
+            }
+          ]
+        },
+        {
+          "id": "allocation_0",
+          "q": "Fund 1: percentage",
+          "type": "number",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 1
+          },
+          "help": "Enter a multiple of 5, without %. All allocations must total 100%.",
+          "map": [
+            {
+              "text": "TEXT TEXT AW-B.0"
+            }
+          ]
+        },
+        {
+          "id": "fund_1",
+          "q": "Fund 2: name",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 2
+          },
+          "map": [
+            {
+              "text": "TEXT TEXT AW.1"
+            }
+          ]
+        },
+        {
+          "id": "allocation_1",
+          "q": "Fund 2: percentage",
+          "type": "number",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 2
+          },
+          "help": "Enter a multiple of 5, without %. All allocations must total 100%.",
+          "map": [
+            {
+              "text": "TEXT TEXT AW-B.1"
+            }
+          ]
+        },
+        {
+          "id": "fund_2",
+          "q": "Fund 3: name",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 3
+          },
+          "map": [
+            {
+              "text": "TEXT TEXT AW.2"
+            }
+          ]
+        },
+        {
+          "id": "allocation_2",
+          "q": "Fund 3: percentage",
+          "type": "number",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 3
+          },
+          "help": "Enter a multiple of 5, without %. All allocations must total 100%.",
+          "map": [
+            {
+              "text": "TEXT TEXT AW-B.2"
+            }
+          ]
+        },
+        {
+          "id": "fund_3",
+          "q": "Fund 4: name",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 4
+          },
+          "map": [
+            {
+              "text": "TEXT TEXT AW.3"
+            }
+          ]
+        },
+        {
+          "id": "allocation_3",
+          "q": "Fund 4: percentage",
+          "type": "number",
+          "required": true,
+          "showIf": {
+            "q": "redirection_count",
+            "gte": 4
+          },
+          "help": "Enter a multiple of 5, without %. All allocations must total 100%.",
+          "map": [
+            {
+              "text": "TEXT TEXT AW-B.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "switch",
+      "title": "Fund switch",
+      "showIf": {
+        "q": "request_type",
+        "in": [
+          "switch",
+          "both"
+        ]
+      },
+      "intro": "Transfer accumulated units between funds. Company minimum transfer and remaining-balance rules apply; review the rules in the PDF with your agent.",
+      "questions": [
+        {
+          "id": "switch_count",
+          "q": "How many transfers?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            }
+          ],
+          "map": []
+        },
+        {
+          "id": "from_0",
+          "q": "Transfer 1: source fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 1
+          },
+          "map": [
+            {
+              "text": "FROM.0"
+            }
+          ]
+        },
+        {
+          "id": "to_0",
+          "q": "Transfer 1: destination fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 1
+          },
+          "map": [
+            {
+              "text": "TO.0"
+            }
+          ]
+        },
+        {
+          "id": "amount_0",
+          "q": "Transfer 1: amount or percentage",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 1
+          },
+          "help": "Include the currency for an amount, or % for a percentage (e.g. PHP 10000 or 100%). Use multiples of 5% when switching by proportion to more than one fund.",
+          "map": [
+            {
+              "text": "AMOUNT.0"
+            }
+          ]
+        },
+        {
+          "id": "from_1",
+          "q": "Transfer 2: source fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 2
+          },
+          "map": [
+            {
+              "text": "FROM.1"
+            }
+          ]
+        },
+        {
+          "id": "to_1",
+          "q": "Transfer 2: destination fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 2
+          },
+          "map": [
+            {
+              "text": "TO.1"
+            }
+          ]
+        },
+        {
+          "id": "amount_1",
+          "q": "Transfer 2: amount or percentage",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 2
+          },
+          "help": "Include the currency for an amount, or % for a percentage (e.g. PHP 10000 or 100%). Use multiples of 5% when switching by proportion to more than one fund.",
+          "map": [
+            {
+              "text": "AMOUNT.1"
+            }
+          ]
+        },
+        {
+          "id": "from_2",
+          "q": "Transfer 3: source fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 3
+          },
+          "map": [
+            {
+              "text": "FROM.2"
+            }
+          ]
+        },
+        {
+          "id": "to_2",
+          "q": "Transfer 3: destination fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 3
+          },
+          "map": [
+            {
+              "text": "TO.2"
+            }
+          ]
+        },
+        {
+          "id": "amount_2",
+          "q": "Transfer 3: amount or percentage",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 3
+          },
+          "help": "Include the currency for an amount, or % for a percentage (e.g. PHP 10000 or 100%). Use multiples of 5% when switching by proportion to more than one fund.",
+          "map": [
+            {
+              "text": "AMOUNT.2"
+            }
+          ]
+        },
+        {
+          "id": "from_3",
+          "q": "Transfer 4: source fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 4
+          },
+          "map": [
+            {
+              "text": "FROM.3"
+            }
+          ]
+        },
+        {
+          "id": "to_3",
+          "q": "Transfer 4: destination fund",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 4
+          },
+          "map": [
+            {
+              "text": "TO.3"
+            }
+          ]
+        },
+        {
+          "id": "amount_3",
+          "q": "Transfer 4: amount or percentage",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "switch_count",
+            "gte": 4
+          },
+          "help": "Include the currency for an amount, or % for a percentage (e.g. PHP 10000 or 100%). Use multiples of 5% when switching by proportion to more than one fund.",
+          "map": [
+            {
+              "text": "AMOUNT.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kyc",
+      "title": "Additional KYC details",
+      "showIf": {
+        "q": "personal_changes",
+        "eq": "yes"
+      },
+      "intro": "Enter the details that have changed. If premiums come from a third-party payor, also accomplish the separate KYC for Beneficial Owner Form.",
+      "questions": [
+        {
+          "id": "gender",
+          "q": "Gender",
+          "type": "radio",
+          "required": false,
+          "options": [
+            {
+              "value": "male",
+              "label": "Male"
+            },
+            {
+              "value": "female",
+              "label": "Female"
+            }
+          ],
+          "map": [
+            {
+              "radio": "GENDER-1",
+              "valueMap": {
+                "male": "1",
+                "female": "2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "civil_status",
+          "q": "Civil status",
+          "type": "radio",
+          "required": false,
+          "options": [
+            {
+              "value": "single",
+              "label": "Single"
+            },
+            {
+              "value": "married",
+              "label": "Married"
+            },
+            {
+              "value": "other",
+              "label": "Other"
+            }
+          ],
+          "map": [
+            {
+              "radio": "CV-1",
+              "valueMap": {
+                "single": "1",
+                "married": "3",
+                "other": "2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "civil_other",
+          "q": "Other civil status",
+          "type": "text",
+          "showIf": {
+            "q": "civil_status",
+            "eq": "other"
+          },
+          "map": [
+            {
+              "text": "Text_RED-1.1.0"
+            }
+          ]
+        },
+        {
+          "id": "salutation",
+          "q": "Salutation",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.0.1"
+            }
+          ]
+        },
+        {
+          "id": "kyc_dob",
+          "q": "Updated date of birth",
+          "type": "date",
+          "map": [
+            {
+              "text": "Text_RED-1.0.2",
+              "format": "date_mdY"
+            }
+          ]
+        },
+        {
+          "id": "age",
+          "q": "Age",
+          "type": "number",
+          "map": [
+            {
+              "text": "Text_RED-1.0.3"
+            }
+          ]
+        },
+        {
+          "id": "kyc_nationality",
+          "q": "Updated nationality",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.1.1"
+            }
+          ]
+        },
+        {
+          "id": "birthplace",
+          "q": "Place of birth (city/province, country)",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.1.3"
+            }
+          ]
+        },
+        {
+          "id": "sss",
+          "q": "SSS / GSIS number",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.2.0"
+            }
+          ]
+        },
+        {
+          "id": "tin",
+          "q": "TIN",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.2.1"
+            }
+          ]
+        },
+        {
+          "id": "id_type",
+          "q": "Other identification type",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.2.2"
+            }
+          ]
+        },
+        {
+          "id": "id_number",
+          "q": "Other ID number",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.2.3"
+            }
+          ]
+        },
+        {
+          "id": "kyc_occupation",
+          "q": "Updated occupation and exact duties",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.1.2"
+            }
+          ]
+        },
+        {
+          "id": "work_nature",
+          "q": "Nature of work / business",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.3.2"
+            }
+          ]
+        },
+        {
+          "id": "kyc_employer",
+          "q": "Updated employer",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.3.0"
+            }
+          ]
+        },
+        {
+          "id": "employer_nature",
+          "q": "Nature of employer business",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.4.0"
+            }
+          ]
+        },
+        {
+          "id": "income",
+          "q": "Gross annual income (PHP)",
+          "type": "number",
+          "map": [
+            {
+              "text": "Text_RED-1.3.1"
+            }
+          ]
+        },
+        {
+          "id": "net_worth",
+          "q": "Net worth (PHP)",
+          "type": "number",
+          "map": [
+            {
+              "text": "Text_RED-1.4.1"
+            }
+          ]
+        },
+        {
+          "id": "kyc_mobile",
+          "q": "Updated mobile number",
+          "type": "phone",
+          "map": [
+            {
+              "text": "Text_RED-1.5.0"
+            }
+          ]
+        },
+        {
+          "id": "kyc_phone",
+          "q": "Updated telephone number",
+          "type": "phone",
+          "map": [
+            {
+              "text": "Text_RED-1.6.0"
+            }
+          ]
+        },
+        {
+          "id": "email",
+          "q": "Email address",
+          "type": "email",
+          "map": [
+            {
+              "text": "Text_RED-1.7.0"
+            }
+          ]
+        },
+        {
+          "id": "fund_source",
+          "q": "Source of funds",
+          "type": "radio",
+          "required": false,
+          "options": [
+            {
+              "value": "salary",
+              "label": "Salary"
+            },
+            {
+              "value": "business",
+              "label": "Business"
+            },
+            {
+              "value": "other",
+              "label": "Other"
+            }
+          ],
+          "map": [
+            {
+              "radio": "SF-1",
+              "valueMap": {
+                "salary": "1",
+                "business": "3",
+                "other": "2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "fund_source_other",
+          "q": "Other source of funds",
+          "type": "text",
+          "showIf": {
+            "q": "fund_source",
+            "eq": "other"
+          },
+          "map": [
+            {
+              "text": "Text_RED-1.3.3"
+            }
+          ]
+        },
+        {
+          "id": "present_address",
+          "q": "Present address (number, street, city, province)",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.5.1"
+            }
+          ]
+        },
+        {
+          "id": "present_country",
+          "q": "Present country",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.5.2"
+            }
+          ]
+        },
+        {
+          "id": "present_zip",
+          "q": "Present ZIP code",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.5.3"
+            }
+          ]
+        },
+        {
+          "id": "permanent_address",
+          "q": "Permanent address (number, street, city, province)",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.6.1"
+            }
+          ]
+        },
+        {
+          "id": "permanent_country",
+          "q": "Permanent country",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.6.2"
+            }
+          ]
+        },
+        {
+          "id": "permanent_zip",
+          "q": "Permanent ZIP code",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.6.3"
+            }
+          ]
+        },
+        {
+          "id": "business_address",
+          "q": "Business / employer address (number, street, city, province)",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.7.1"
+            }
+          ]
+        },
+        {
+          "id": "business_country",
+          "q": "Business / employer country",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.7.2"
+            }
+          ]
+        },
+        {
+          "id": "business_zip",
+          "q": "Business / employer ZIP code",
+          "type": "text",
+          "map": [
+            {
+              "text": "Text_RED-1.7.3"
+            }
+          ]
+        },
+        {
+          "id": "update_mailing",
+          "q": "Update your mailing address?",
+          "type": "radio",
+          "required": false,
+          "options": [
+            {
+              "value": "yes",
+              "label": "Yes"
+            },
+            {
+              "value": "no",
+              "label": "No"
+            }
+          ],
+          "map": [
+            {
+              "radio": "YN-1",
+              "valueMap": {
+                "yes": "1",
+                "no": "3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mailing_address",
+          "q": "Preferred mailing address",
+          "type": "radio",
+          "required": false,
+          "options": [
+            {
+              "value": "present",
+              "label": "Present"
+            },
+            {
+              "value": "permanent",
+              "label": "Permanent"
+            },
+            {
+              "value": "business",
+              "label": "Business / employer"
+            }
+          ],
+          "map": [
+            {
+              "radio": "YN-2",
+              "valueMap": {
+                "present": "1",
+                "permanent": "3",
+                "business": "2"
+              }
+            }
+          ],
+          "showIf": {
+            "q": "update_mailing",
+            "eq": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "beneficial_owner",
+      "title": "Beneficial owner",
+      "questions": [
+        {
+          "id": "beneficial_owner",
+          "q": "Do you have a beneficial owner?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": "Yes"
+            },
+            {
+              "value": "no",
+              "label": "No"
+            }
+          ],
+          "map": [
+            {
+              "radio": "YN-OH YES",
+              "valueMap": {
+                "yes": "1",
+                "no": "3"
+              }
+            }
+          ],
+          "help": "A natural person who ultimately owns or controls the customer, or on whose behalf a transaction is conducted. If yes, also accomplish the separate KYC for Beneficial Owner Form."
+        }
+      ]
+    },
+    {
+      "id": "signatures",
+      "title": "Declarations and signatures",
+      "intro": "Review the full declarations and privacy statement in Preview PDF. The application takes effect only after Pru Life UK receives and approves it.",
+      "questions": [
+        {
+          "id": "declarations",
+          "q": "Have you read and agreed to the declarations and privacy purpose statement on pages 2 and 3 of the PDF?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": "I have read and agree"
+            }
+          ],
+          "map": [],
+          "help": "Open Preview PDF to read the complete terms before signing."
+        },
+        {
+          "id": "executed_at",
+          "q": "Place of signing",
+          "type": "text",
+          "required": true,
+          "map": [
+            {
+              "text": "SIGNATURE-2"
+            }
+          ]
+        },
+        {
+          "id": "sign_date",
+          "q": "Date completed",
+          "type": "date",
+          "required": true,
+          "map": [
+            {
+              "comb": [
+                "DATE-A1",
+                "DATE-A2",
+                "DATE-A3",
+                "DATE-A4",
+                "DATE-A5",
+                "DATE-A6",
+                "DATE-A7",
+                "DATE-A8"
+              ],
+              "format": "date_digits"
+            }
+          ]
+        },
+        {
+          "id": "signer_name",
+          "q": "Policyowner / authorized representative: printed name",
+          "type": "text",
+          "required": true,
+          "map": [
+            {
+              "draw": {
+                "page": 3,
+                "tbox": [
+                  64,
+                  268,
+                  228,
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "signature",
+          "q": "Policyowner / authorized representative: signature",
+          "type": "signature",
+          "required": true,
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  64,
+                  251,
+                  228,
+                  17
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "has_beneficiary",
+          "q": "Does an irrevocable beneficiary need to sign?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": "Yes"
+            },
+            {
+              "value": "no",
+              "label": "No"
+            }
+          ],
+          "map": []
+        },
+        {
+          "id": "beneficiary_name",
+          "q": "Irrevocable beneficiary: full name(s)",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "has_beneficiary",
+            "eq": "yes"
+          },
+          "map": [
+            {
+              "draw": {
+                "page": 3,
+                "tbox": [
+                  64,
+                  312,
+                  228,
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "beneficiary_signature",
+          "q": "Irrevocable beneficiary signature(s)",
+          "type": "signature",
+          "required": true,
+          "showIf": {
+            "q": "has_beneficiary",
+            "eq": "yes"
+          },
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  64,
+                  295,
+                  228,
+                  17
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "has_assignee",
+          "q": "Does an authorized signatory of an assignee need to sign?",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": "Yes"
+            },
+            {
+              "value": "no",
+              "label": "No"
+            }
+          ],
+          "map": []
+        },
+        {
+          "id": "assignee_name",
+          "q": "Authorized signatory of assignee: printed name",
+          "type": "text",
+          "required": true,
+          "showIf": {
+            "q": "has_assignee",
+            "eq": "yes"
+          },
+          "map": [
+            {
+              "draw": {
+                "page": 3,
+                "tbox": [
+                  314,
+                  312,
+                  228,
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "assignee_signature",
+          "q": "Authorized signatory of assignee: signature",
+          "type": "signature",
+          "required": true,
+          "showIf": {
+            "q": "has_assignee",
+            "eq": "yes"
+          },
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  314,
+                  295,
+                  228,
+                  17
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "customary_signatures",
+      "title": "Certification of customary signatures",
+      "intro": "Provide the customary signatures certified on page 3 of the form.",
+      "questions": [
+        {
+          "id": "customary_0",
+          "q": "Policyowner / authorized representative: customary signature 1",
+          "type": "signature",
+          "required": true,
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  237,
+                  361,
+                  94,
+                  50
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "customary_1",
+          "q": "Policyowner / authorized representative: customary signature 2",
+          "type": "signature",
+          "required": true,
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  345,
+                  361,
+                  94,
+                  50
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "customary_2",
+          "q": "Policyowner / authorized representative: customary signature 3",
+          "type": "signature",
+          "required": true,
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  453,
+                  361,
+                  94,
+                  50
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "beneficiary_customary_0",
+          "q": "Irrevocable beneficiary: customary signature 1",
+          "type": "signature",
+          "showIf": {
+            "q": "has_beneficiary",
+            "eq": "yes"
+          },
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  236,
+                  445,
+                  94,
+                  50
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "beneficiary_customary_1",
+          "q": "Irrevocable beneficiary: customary signature 2",
+          "type": "signature",
+          "showIf": {
+            "q": "has_beneficiary",
+            "eq": "yes"
+          },
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  344,
+                  445,
+                  94,
+                  50
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "beneficiary_customary_2",
+          "q": "Irrevocable beneficiary: customary signature 3",
+          "type": "signature",
+          "showIf": {
+            "q": "has_beneficiary",
+            "eq": "yes"
+          },
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  452,
+                  445,
+                  94,
+                  50
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "witness",
+      "title": "Witness (agent review)",
+      "admin": true,
+      "questions": [
+        {
+          "id": "witness_name",
+          "q": "Witness: printed name",
+          "type": "text",
+          "map": [
+            {
+              "draw": {
+                "page": 3,
+                "tbox": [
+                  314,
+                  268,
+                  228,
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "witness_signature",
+          "q": "Witness: signature",
+          "type": "signature",
+          "map": [
+            {
+              "image": {
+                "page": 3,
+                "tbox": [
+                  314,
+                  251,
+                  228,
+                  17
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

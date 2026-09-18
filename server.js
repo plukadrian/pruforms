@@ -361,6 +361,11 @@ app.post('/api/sessions/:id/generate', wrap(async (req, res) => {
     }
   }
 
+  if (def.id === 'premium-redirection-fund-switch') {
+    const error = require('./lib/premium-redirection-validation').validatePremiumRedirection(session.answers);
+    if (error) return res.status(400).json({ error });
+  }
+
   // Generate once to validate it renders and to surface any mapping problems.
   const { problems } = await generatePdf(def, session.answers);
   if (admin) {

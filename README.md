@@ -1,6 +1,6 @@
 # Pru Forms — Electronic Form Filler
 
-Turns four Pru Life UK PDF forms into clean electronic forms, filled page by
+Turns five Pru Life UK PDF forms into clean electronic forms, filled page by
 page. Each page groups one topic (e.g. *Details of Policyowner*, *Addresses*,
 *Signatures*), with typed inputs, a signature drawing pad, automatic saving,
 a live **document preview** showing the answers placed on the official PDF,
@@ -48,6 +48,7 @@ account automatically (open self-service, no invite step).
 | Policy Amendment Request (Individual Policyowner) | AcroForm fields + overlay for 2 boxes the source PDF left non-fillable |
 | Customer Information Update | AcroForm fields |
 | Change of Servicing Agent | AcroForm fields |
+| Premium Redirection and Fund Switch | AcroForm fields + signature overlays |
 | Reinstatement Form (Individual Policyowner) | Full coordinate overlay (source PDF has no fillable fields) |
 
 ## Run
